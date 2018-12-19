@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <el-container>
-      <el-header>RedisConsole</el-header>
+      <el-header class="header">
+        <vheader/>
+      </el-header>
       <el-container>
         <el-aside width="200px">
           <navmenu></navmenu>
@@ -15,22 +17,21 @@
 <script>
 // @ is alias for src defined in webpack.base.conf.js
 import NavMenu from '@/components/NavMenu'
+import Header from '@/components/Header'
 
 export default {
   name: 'App',
   components: {
-    'navmenu': NavMenu
+    'navmenu': NavMenu,
+    'vheader': Header
   }
 }
 </script>
 
 <style>
-  #app {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-    margin-top: 60px;
+  .header{
+    background-color: #409EFF;
+    color: #fff;
+    line-height: 60px;
   }
 </style>
