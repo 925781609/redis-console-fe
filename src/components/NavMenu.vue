@@ -1,13 +1,16 @@
 <template>
   <el-row class="tac">
     <!-- 侧边栏宽度-->
-    <el-col :span="24">
+    <el-col :span="20">
       <el-menu default-active="2" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose"
                unique-opened router background-color="#545c64" text-color="#fff" active-text-color="#ffd04b">
-        <el-menu-item index="1">
-          <i class="el-icon-search"></i>
-          <span slot="title">查找</span>
-        </el-menu-item>
+        <div class=”header_search”>
+          <el-input
+            placeholder=”请输入集群名称”
+            prefix-icon=”el-icon-search”
+          >
+          </el-input>
+        </div>
         <el-submenu index="2">
           <template slot="title">
             <i class="el-icon-location"></i>
@@ -30,7 +33,7 @@
         </el-submenu>
         <el-submenu index="4">
           <template slot="title">
-            <i class = "el-icon-location"></i>
+            <i class="el-icon-location"></i>
             <span>Standalone</span>
           </template>
           <el-menu-item-group>
