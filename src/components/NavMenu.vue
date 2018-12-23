@@ -1,16 +1,13 @@
 <template>
   <el-row class="tac">
     <!-- 侧边栏宽度-->
-    <el-col :span="20">
+    <el-col :span="35">
       <el-menu default-active="2" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose"
                unique-opened router background-color="#545c64" text-color="#fff" active-text-color="#ffd04b">
-        <div class=”header_search”>
-          <el-input
-            placeholder=”请输入集群名称”
-            prefix-icon=”el-icon-search”
-          >
-          </el-input>
-        </div>
+        <el-form ref="form" :model="form">
+          <el-input placeholder="请输入名称"
+                    suffix-icon="el-icon-search"></el-input>
+        </el-form>
         <el-submenu index="2">
           <template slot="title">
             <i class="el-icon-location"></i>

@@ -9,6 +9,7 @@
           <navmenu></navmenu>
         </el-aside>
         <el-main>
+          <!-- 渲染匹配的组件-->
           <router-view></router-view>
         </el-main>
       </el-container>

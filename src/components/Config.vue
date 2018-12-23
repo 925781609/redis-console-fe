@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: 'configs'
+  name: 'Config'
 }
 </script>
 
