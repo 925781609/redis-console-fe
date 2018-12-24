@@ -27,8 +27,22 @@ export default {
   data () {
     return {
       search: '',
-      items: ['redis1', 'redis2', 'redis3', 'redis4', 'redis11']
+      items: []
     }
+  },
+  mounted () {
+    this.$axios
+      .get('/names')
+      .then(response => {
+        if (response.data.code === 200) {
+          this.items = response.data.data
+        } else {
+          alert(response.data.message)
+        }
+      })
+      .catch(response => {
+        alert(response.data.message)
+      })
   },
   methods: {
     handleOpen (key, keyPath) {
