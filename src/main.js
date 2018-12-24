@@ -6,6 +6,8 @@ import router from './router'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import global_ from '@/components/Global.vue'
+import store from './store/index'
+
 // 引用axios，并设置基础URL为后端服务api地址
 Vue.prototype.GLOBAL = global_
 var axios = require('axios')
@@ -22,6 +24,7 @@ Vue.use(ElementUI)
 new Vue({
   el: '#app',
   router,
+  store,
   components: {App},
   template: '<App/>'
 })
