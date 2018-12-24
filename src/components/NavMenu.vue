@@ -5,12 +5,17 @@
       <el-menu default-active="2" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose"
                unique-opened router background-color="#545c64" text-color="#fff" active-text-color="#ffd04b">
         <el-form ref="form" :model="form">
-          <el-input placeholder="请输入名称"
+          <el-input v-model="search" placeholder="请输入Redis实例名称"
                     suffix-icon="el-icon-search"></el-input>
         </el-form>
-        <el-menu-item class="category-list" v-for="item in items" :key="item" @click="handleRedisSelect(item)">
-          {{item}}
-        </el-menu-item>
+        <div v-if="searchData.length>0">
+          <el-menu-item class="category-list" v-for="item in searchData" :key="item" @click="handleRedisSelect(item)">
+            {{item}}
+          </el-menu-item>
+        </div>
+        <div v-else>
+          暂无数据
+        </div>
       </el-menu>
     </el-col>
   </el-row>
@@ -21,7 +26,8 @@ export default {
   name: 'NavMenu',
   data () {
     return {
-      items: ['redis1', 'redis2', 'redis3', 'redis4']
+      search: '',
+      items: ['redis1', 'redis2', 'redis3', 'redis4', 'redis11']
     }
   },
   methods: {
@@ -33,6 +39,19 @@ export default {
     },
     handleRedisSelect (redisKey) {
       this.$store.dispatch('selectRedis', redisKey)
+    }
+  },
+  computed: {
+    searchData () {
+      var search = this.search
+      console.log(search)
+      console.log(this.items)
+      if (search) {
+        return this.items.filter(function (item) {
+          return item.includes(search)
+        })
+      }
+      return this.items
     }
   }
 }
