@@ -8,39 +8,8 @@
           <el-input placeholder="请输入名称"
                     suffix-icon="el-icon-search"></el-input>
         </el-form>
-        <el-submenu index="2">
-          <template slot="title">
-            <i class="el-icon-location"></i>
-            <span>Cluster</span>
-          </template>
-          <el-menu-item-group>
-            <el-menu-item index="2-1">cluster1</el-menu-item>
-            <el-menu-item index="2-2">cluster2</el-menu-item>
-          </el-menu-item-group>
-        </el-submenu>
-        <el-submenu index="3">
-          <template slot="title">
-            <i class="el-icon-location"></i>
-            <span>Sentinel</span>
-          </template>
-          <el-menu-item-group>
-            <el-menu-item index="3-1">sentinel1</el-menu-item>
-            <el-menu-item index="3-2">sentinel2</el-menu-item>
-          </el-menu-item-group>
-        </el-submenu>
-        <el-submenu index="4">
-          <template slot="title">
-            <i class="el-icon-location"></i>
-            <span>Standalone</span>
-          </template>
-          <el-menu-item-group>
-            <el-menu-item index="4-1">standalone1</el-menu-item>
-            <el-menu-item index="4-2">standalone2</el-menu-item>
-          </el-menu-item-group>
-        </el-submenu>
-        <el-menu-item index="5">
-          <i class="el-icon-setting"></i>
-          <span slot="title">设置</span>
+        <el-menu-item class="category-list" v-for="item in items" :key="item" @click="handleRedisSelect(item)">
+          {{item}}
         </el-menu-item>
       </el-menu>
     </el-col>
@@ -50,12 +19,20 @@
 <script>
 export default {
   name: 'NavMenu',
+  data () {
+    return {
+      items: ['redis1', 'redis2', 'redis3', 'redis4']
+    }
+  },
   methods: {
     handleOpen (key, keyPath) {
       console.log(key, keyPath)
     },
     handleClose (key, keyPath) {
       console.log(key, keyPath)
+    },
+    handleRedisSelect (redisKey) {
+      this.$store.dispatch('selectRedis', redisKey)
     }
   }
 }
