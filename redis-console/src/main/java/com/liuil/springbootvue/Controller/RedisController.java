@@ -1,11 +1,14 @@
 package com.liuil.springbootvue.Controller;
 
 
+import com.alibaba.fastjson.JSONObject;
 import com.liuil.springbootvue.pojo.vo.RedisCommandVo;
 import com.liuil.springbootvue.response.Response;
 import com.liuil.springbootvue.response.ResponseFactory;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 import javax.validation.Valid;
 import org.springframework.validation.BindingResult;
@@ -43,8 +46,15 @@ public class RedisController {
 
   @GetMapping("api/configs")
   public Response configs() {
-
-
-    return null;
+    Map<String, String> map = new HashMap<String, String >();
+    map.put("k11", "v11");
+    map.put("k12", "v12");
+    map.put("k13", "v13");
+    Map<String, Object> map2 = new HashMap<String, Object>();
+    map2.put("k1", map);
+    map2.put("k2", "v2");
+    JSONObject json = new JSONObject(map2);
+    System.out.println(json);
+    return ResponseFactory.buildSuccessResponse(json);
   }
 }
