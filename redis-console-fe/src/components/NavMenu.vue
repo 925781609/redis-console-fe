@@ -7,9 +7,9 @@
         <el-input v-model="search" placeholder="请输入Redis实例名称"
                   suffix-icon="el-icon-search"></el-input>
         <div v-if="searchData.length>0">
-          <el-menu-item class="category-list" v-for="item in searchData" :key="item" @click="handleRedisSelect(item)">
-            {{item}}
-          </el-menu-item>
+            <el-menu-item :index="item" v-for="item in searchData" :key="item" @click="handleRedisSelect(item)">
+              {{item}}
+            </el-menu-item>
         </div>
         <div v-else>
           暂无数据
