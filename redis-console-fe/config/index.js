@@ -12,11 +12,11 @@ module.exports = {
     assetsPublicPath: '/',
     // 路由接口代理配置
     proxyTable: {
-      'api':{
+      '/api':{
         target: 'http://localhost:8080',
         changeOrigin:true,
         pathRewrite:{
-          '^api':''
+          '^/api':'/api'
         }
       }
     },
