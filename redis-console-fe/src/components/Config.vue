@@ -1,50 +1,31 @@
 <template>
-  <div>
-    <el-form>
-      <el-form-item>
-        <el-button type="primary" @click="execute">查询</el-button>
-      </el-form-item>
-    </el-form>
-    <h1>{{this.$store.state.redis}}的配置为</h1>
-    <tree-view :data="response" :options="{maxDepth: 5}" @change-data="onChangeData">
-    </tree-view>
-  </div>
+  <editor v-model="code" @init="editorInit" lang="json" theme="chrome" width="500" height="100"></editor>
+
 </template>
-
 <script>
-import Vue from 'vue'
-import TreeView from 'vue-json-tree-view'
-
-Vue.use(TreeView)
 export default {
-  name: 'Config',
+  components: {
+    editor: require('vue2-ace-editor')
+  },
+  // 注册组件
   data () {
     return {
-      response: []
+      // 编辑器的默认输入值
+      code: 'var a=1\nlet b=2',
+      cmOptions: {
+        mode: 'javascript',
+        extraKeys: {'Ctrl-Space': 'autocomplete'}
+      }
     }
   },
   methods: {
-    execute () {
-      this.$axios
-        .get('/configs')
-        .then(successResponse => {
-          var tmp = JSON.stringify(successResponse.data.data)
-          console.log(successResponse.data.data)
-          console.log(this.response)
-          this.response = JSON.parse(tmp)
-          if (successResponse.data.code === 200) {
-            // this.$router.replace({path: '/index'})
-          }
-        })
-        .catch(failResponse => {
-        })
-    },
-    onChangeData (data) {
+    editorInit: function () {
+      require('brace/ext/language_tools') // language extension prerequsite...
+      require('brace/mode/json') // language
+      require('brace/mode/less')
+      require('brace/theme/chrome')
+      require('brace/snippets/json') // snippet
     }
   }
 }
 </script>
-
-<style scoped>
-
-</style>
