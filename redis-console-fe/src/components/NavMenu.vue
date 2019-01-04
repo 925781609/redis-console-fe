@@ -3,7 +3,7 @@
     <!-- 侧边栏宽度-->
     <el-col :span="35">
       <el-menu default-active="2" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose"
-               unique-opened router background-color="#545c64" text-color="#fff" active-text-color="#ffd04b">
+               unique-opened background-color="#545c64" text-color="#fff" active-text-color="#ffd04b">
         <el-input v-model="search" placeholder="请输入Redis实例名称"
                   suffix-icon="el-icon-search"></el-input>
         <div v-if="searchData.length>0">
