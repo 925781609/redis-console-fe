@@ -1,7 +1,6 @@
 package com.liuil.springbootvue.Controller;
 
 
-import com.alibaba.fastjson.JSONObject;
 import com.liuil.springbootvue.pojo.vo.RedisCommandVo;
 import com.liuil.springbootvue.response.Response;
 import com.liuil.springbootvue.response.ResponseFactory;
@@ -53,8 +52,6 @@ public class RedisController {
     Map<String, Object> map2 = new HashMap<String, Object>();
     map2.put("k1", map);
     map2.put("k2", "v2");
-    JSONObject json = new JSONObject(map2);
-    System.out.println(json);
-    return ResponseFactory.buildSuccessResponse(json);
+    return ResponseFactory.buildSuccessResponse(map.toString());
   }
 }

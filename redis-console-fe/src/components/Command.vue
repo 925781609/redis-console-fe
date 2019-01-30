@@ -13,6 +13,12 @@
         <el-form-item>
           <el-button type="primary" @click="execute">执行</el-button>
         </el-form-item>
+        <el-form-item>
+          <el-button type="primary" @click="setCookie">设置cookie</el-button>
+        </el-form-item>
+        <el-form-item>
+          <el-button type="primary" @click="clearCookie">清除cookie</el-button>
+        </el-form-item>
       </el-form>
       结果：<textarea cols="30" rows="10" v-model="response"></textarea>
     </div>
@@ -44,6 +50,18 @@ export default {
           }
         })
         .catch(failResponse => {
+        })
+    },
+    setCookie () {
+      this.$axios
+        .get('/cookie/add', {
+          command: this.command.name
+        })
+    },
+    clearCookie () {
+      this.$axios
+        .get('/cookie/add', {
+          command: this.command.name
         })
     }
   }

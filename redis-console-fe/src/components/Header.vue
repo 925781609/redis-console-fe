@@ -7,6 +7,7 @@
           <el-menu-item index="2"></el-menu-item>
           <el-menu-item index="3" :route="{path:'/config'}">查询配置</el-menu-item>
           <el-menu-item index="4" :route="{path:'/command'} ">执行命令</el-menu-item>
+          <el-menu-item index="5" :route="{path:'/cookie'} ">Cookie测试</el-menu-item>
         </el-menu>
       </div>
 
